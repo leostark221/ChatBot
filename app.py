@@ -65,10 +65,8 @@ def chat():
 
 
 if __name__ == '__main__':
-    pass
-    # Default to 8080 if PORT is not set
-    # port = int(os.environ.get("PORT", 8080))
-    # app.run(host="0.0.0.0", port=port, debug=True)
+    # Remove any hardcoded port, as it's unnecessary for Render
+    app.run(host="0.0.0.0", debug=True)
 
 
 # from flask import Flask, render_template
