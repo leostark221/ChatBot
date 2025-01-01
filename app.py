@@ -13,12 +13,12 @@ app = Flask(__name__)
 
 load_dotenv()
 
-# import os
-
-# # Directly assign the API keys here
 PINECONE_API_KEY = os.environ.get('PINECONE_API_KEY')
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 
+# import os
+
+# # Directly assign the API keys here
 os.environ["PINECONE_API_KEY"] = PINECONE_API_KEY
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
@@ -65,7 +65,7 @@ def chat():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run()
 
 # from flask import Flask, render_template
 
