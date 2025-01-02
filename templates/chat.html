@@ -42,65 +42,56 @@
 	</head>
 	
 	<body class=" flex flex-col items-center">
-		<!-- <div class="">
-			<div class="h-full flex-col flex bg-red-500 justify-center w-full ">		
-				<div class="">
-					<div class="">
-						<div class="">
-							<div class="">
-								<div class="user_info">
-									<span>Mental Health Assistant</span>
-									<p>Developed By: Aliza & Rahima </p>
-								</div>
-							</div>
-						</div>
-						<div id="messageFormeight" class="card-body msg_card_body"></div>
-						<div class="card-footer">
-							<form id="messageArea" class="input-group">
-                                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
-								<div class="input-group-append">
-									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
+		<div id="selectedItem" class="fixed bottom-[50%] opacity-30 text-6xl">gpt 3.5</div>
+
 		<div class="w-[80%] flex flex-col items-center justify-center">
-				<div class="flex flex-col items-center justify-center fixed top-6 w-full py-2 headerBar">
-					<!-- <img src="https://i.ibb.co/K5tyL5D/logo.png" alt="logo" class="lg:w-20 lg:h-20 sm:w-20 sm:h-20"> -->
-					<div class="lg:text-lg text-2xl text-white">Mental Health Assistant</div>
-					<div class="lg:text-lg text-2xl text-white">Developed By: Aliza & Rahima</div>
-					<div class="lg:text-sm text-2xl text-white">gpt 3.5 or gpt 4</div>
-					<div class="lg:text-sm text-2xl text-white">DialoGPT </div>
-					<div class="lg:text-sm text-2xl text-white">BERT_based models </div>
+			<div class="flex items-center fixed top-0 w-full py-2 headerBar">
+				<div class="pl-5 cursor-pointer">
+				  <img src="https://i.ibb.co/2k8Ss2f/dash.png" alt="logo" class="lg:w-8 lg:h-6 sm:w-10 sm:h-10 active:opacity-50">
 				</div>
+				<div class="flex flex-col items-center w-[89%] justify-center">
+				  <img src="https://i.ibb.co/K5tyL5D/logo.png" alt="logo" class="lg:w-14 lg:h-14 sm:w-20 sm:h-20">
+				  <div class="lg:text-lg text-2xl text-white">Mental Health Assistant</div>
+				  <div class="lg:text-lg text-2xl text-white">Developed By: Aliza & Rahima</div>
+				</div>
+			  </div>
+			  
+			  <div class="side-nav  fixed top-0 left-0 h-full  w-[40%] lg:w-64 headerBar text-white shadow-lg z-50">
+				<div class="p-4 flex justify-between items-center">
+				  <h2 class="text-4xl lg:text-xl">Menu</h2>
+				  <button class="close-nav text-4xl  lg:text-lg font-bold">&times;</button>
+				</div>
+				<ul class="p-4 flex pl-2 flex-col ">
+				  <li class="py-6"><a class="hover:underline cursor-pointer active:opacity-50   text-4xl lg:text-xl"
+					onclick="updateSelection('gpt 3.5')">gpt 3.5</a></li>
+				  <li class="py-6"><a class="hover:underline cursor-pointer active:opacity-50  text-4xl lg:text-xl"
+					onclick="updateSelection('4BERT_based')">4BERT_based</a></li>
+				  <li class="py-6"><a  class="hover:underline cursor-pointer active:opacity-50  text-4xl lg:text-xl"
+					onclick="updateSelection('modelsDialoGPT')">modelsDialoGPT</a></li>
+				</ul>
+			  </div>
 				<div  id="messageFormeight"  class="pb-32  border-x-4 rounded-lg h-[94vh] overflow-y-auto w-full scrollbar-hide">
-
 				<div 
-    id="messageFormeight" 
-    class=" mt-72   rounded-lg  w-full  overflow-y-auto scrollbar-hide">
-	
-</div>
-</div>
+   				 id="messageFormeight" 
+    			class=" mt-72   rounded-lg  w-full  overflow-y-auto scrollbar-hide">
+			</div></div>
+			<div class="fixed w-full bottom-0">
+			<div class="flex w-full items-center justify-center">
 
-<div class="fixed w-full bottom-0">
-	<div class="flex w-full items-center justify-center">
+			<form id="messageArea" class="flex justify-center  w-[79%] ">
+				
+			    <input 
+			        type="text" 
+			        id="text" 
+			        name="msg" 
+			        placeholder="Type your message..." 
+			        autocomplete="off" 
+			        class="flex w-[95%] p-3 sendBox h-20 lg:text-2xl sm:text-4xl rounded-3xl outline-none " 
+			        required />
+			</form>
+			</div>
 
-<form id="messageArea" class="flex justify-center  w-[79%] ">
-    <input 
-        type="text" 
-        id="text" 
-        name="msg" 
-        placeholder="Type your message..." 
-        autocomplete="off" 
-        class="flex w-[95%] p-3 sendBox h-20 lg:text-2xl sm:text-4xl rounded-3xl outline-none " 
-        required />
-</form>
-</div>
-
-</div>
+			</div>
 
 
 		</div>
@@ -133,6 +124,23 @@
 				});
 			});
 		</script> -->
+		<script>
+			function updateSelection(selectedText) {
+			  // Update the content of the div with the selected text
+			  const displayDiv = document.getElementById('selectedItem');
+			  displayDiv.textContent = selectedText;
+		  
+			  // Optionally, change the opacity for better visibility
+			  displayDiv.style.opacity = 1;
+		  
+			  // Set a timeout to revert the opacity after some time (optional)
+			  setTimeout(() => {
+				displayDiv.style.opacity = 0.3;
+			  }, 3000); // Reset opacity after 3 seconds
+			}
+		  </script>
+		  
+		
 		<script>
 			$(document).ready(function() {
     function scrollToBottom() {
@@ -172,6 +180,29 @@
 });
 
 		</script>
+		<script>
+			// Select the elements
+			const toggleNavButton = document.querySelector('.pl-5');
+			const sideNav = document.querySelector('.side-nav');
+			const closeNavButton = document.querySelector('.close-nav');
+		  
+			// Open side navigation
+			toggleNavButton.addEventListener('click', () => {
+			  sideNav.classList.add('open');
+			});
+		  
+			// Close side navigation
+			closeNavButton.addEventListener('click', () => {
+			  sideNav.classList.remove('open');
+			});
+		  
+			// Close the side nav if the user clicks outside of it
+			window.addEventListener('click', (e) => {
+			  if (sideNav.classList.contains('open') && !sideNav.contains(e.target) && !toggleNavButton.contains(e.target)) {
+				sideNav.classList.remove('open');
+			  }
+			});
+		  </script>
 		<style>
 			body {
 				background: #BCC0BC;
@@ -182,7 +213,14 @@
 				margin-top: auto;
 				margin-bottom: auto;
 			}
+			.side-nav {
+ 				 transform: translateX(-100%);
+  				 transition: transform 0.3s ease-in-out;
+			}
 
+			.side-nav.open {
+ 				 transform: translateX(0);
+			}
 			.card {
 				border-radius: 15px !important;
 				background-color: #ffffff;
